@@ -7,8 +7,37 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var reservations = [];
+var reservations = [
+  {
+    name: "John Test",
+    phoneNumber: 5555555555,
+    email: 'test@test.com',
+    uniqueID: 1234
+  }
+];
 
+app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "index.html"));
+  });
+
+app.get("/reservations", function(req, res) {
+  res.sendFile(path.join(__dirname, "reservations.html"));
+});
+
+app.get("/tables", function(req, res) {
+    res.sendFile(path.join(__dirname, "tables.html"));
+});
+
+app.get("/api/tables", function(req, res) {
+  return res.json(reservations);
+});
+
+app.post("/api/tables", function(req, res) {
+  var newTable = req.body;
+  console.log(newTable.name);
+  reservations.push(newTable);
+  res.json(newTable);
+});
 
 // Starts the server to begin listening
 // =============================================================
