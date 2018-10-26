@@ -9,25 +9,23 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 
 <body>
-
-  <div class="container">
-    <div class="jumbotron">
-      <h1>Hot Restaurant</h1>
-      <h3>View tables</h3>
-      <hr>
-      <a href="/">
-        <button class="btn">
-         View Tables</button>
-      </a>
-      <a href="/all">
-        <button class="btn">
-         Home</button>
-      </a>
+<div class="container">
+  <div class="jumbotron mt-3">
+    <h1 class="text-center"><span class="glyphicon glyphicon-fire"></span>Hot Restaurant</h1>
+    <h3 class="text-center">View Tables</h3>
+    <hr>
+    <div class="mx-auto w-50">
+    <button class="btn btn-info btn-lg"><span class="glyphicon glyphicon-pencil"></span> Make Reservation </button>
+    <button class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-home"></span> Home </button>
     </div>
+  </div>
+
+
     <div class="row">
         <div class="col-lg-12">
           <div class="card">
@@ -35,7 +33,12 @@
                 <h3>Current Reservations</h3>
               </div>
               <div class="card-body">
-                <h2>RESERVATIONS HERE</h2>
+                <ul class="list-group" id="reservationList">
+                  <li>Current reservation</li>
+                  <li>Current reservation</li>
+                  <li>Current reservation</li>
+                  </ul>
+
               </div>
             </div>
           </div>
@@ -49,11 +52,16 @@
                   <h3>Waiting List</h3>
                 </div>
                 <div class="card-body">
-                  <h2>WAITING LIST HERE</h2>
+                    <ul class="list-group" id="reservationList">
+                        <li>Waiting list</li>
+                        <li>Waiting list</li>
+                        </ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+
         </body>
         </html>
