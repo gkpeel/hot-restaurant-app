@@ -76,6 +76,11 @@
 
           <script type="text/javascript">
 
+            $.get('/api/tables', function(data) {
+              numberTablesReserved = data.length;
+              console.log(numberTablesReserved);
+            });
+            
             $("#submitReservation").on("click", function(event) {
               event.preventDefault();
         
@@ -85,14 +90,22 @@
                 email: $("#email").val().trim(),
                 uniqueID: $("#uniqueID").val().trim(),
               };
-        
 
-              $.post("/api/tables", newReservation)
-                .then(function(data) {
-                  console.log(data);
-                  alert("Adding reservation...");
-                });
-        
+
+              if (numberTablesReserved < 5) {
+                $.post("/api/tables", newReservation)
+                  .then(function(data) {
+                    console.log(data);
+                    alert("Adding reservation...");
+                  });
+              } else {
+                $.post("/api/waitlist", newReservation)
+                  .then(function(data) {
+                    console.log(data);
+                    alert("Adding to waitlist...");
+                  });
+              }
+
             });
         
           </script>
