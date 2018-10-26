@@ -16,9 +16,11 @@ var reservations = [
   }
 ];
 
+var waitList = [];
+
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
-  });
+});
 
 app.get("/reservations", function(req, res) {
   res.sendFile(path.join(__dirname, "reservations.html"));
@@ -32,12 +34,28 @@ app.get("/api/tables", function(req, res) {
   return res.json(reservations);
 });
 
+app.get("/api/waitlist", function(req, res) {
+  return res.json(waitList);
+});
+
 app.post("/api/tables", function(req, res) {
   var newTable = req.body;
-  console.log(newTable.name);
+
+  for (var i=0; i<reservations.length; i++) {
+    if (newTable.uniqueID === reservations[i].uniqueID) {
+      console.log('You have a reservation');
+    }
+  }
   reservations.push(newTable);
   res.json(newTable);
 });
+
+app.post("/api/waitlist", function(req, res) {
+  var newTable = req.body;
+  waitList.push(newTable);
+  res.json(newTable);
+});
+
 
 // Starts the server to begin listening
 // =============================================================
